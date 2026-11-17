@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AutoShooter
   projectilePrefab: {fileID: 796096272717400556, guid: 02ee1583b718f744981a2e3d02d21dd4, type: 3}
   firePoint: {fileID: 395994804}
-  fireInterval: 1
+  fireInterval: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,8 +808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyFactory: {fileID: 2039337101}
   player: {fileID: 395994804}
-  spawnInterval: 3
-  spawnDistance: 15
+  spawnInterval: 0.5
+  spawnDistance: 10
 --- !u!4 &1230286973
 Transform:
   m_ObjectHideFlags: 0
