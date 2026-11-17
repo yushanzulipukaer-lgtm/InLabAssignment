@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class AutoShooter : MonoBehaviour
 {
-    [SerializeField] private Projectile projectilePrefab;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private ProjectilePool projectilePool;
 
     [SerializeField] private float fireInterval = 1f;
 
@@ -49,9 +48,9 @@ public class AutoShooter : MonoBehaviour
 
     private void Fire(Enemy target)
     {
-        Vector3 spawnPosition = firePoint != null ? firePoint.position : transform.position;
+        Vector3 spawnPosition = transform.position;
 
-        Projectile projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+        Projectile projectile = projectilePool.GetProjectile(spawnPosition);
 
         Vector2 direction = target.transform.position - transform.position;
 

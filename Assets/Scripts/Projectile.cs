@@ -7,20 +7,16 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifeTime = 3f;
 
     private Vector2 direction;
-
-    private void Start()
-    {
-        Destroy(gameObject,lifeTime);
-    }
-
-    public void Initialize(Vector2 newDirection)
-    {
-        direction = newDirection.normalized;
-    }
+    private float timer;
 
     private void Update()
     {
         transform.position += (Vector3)direction * speed * Time.deltaTime;
+
+        timer += Time.deltaTime;
+
+        if(timer >= lifeTime)
+            gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,7 +27,13 @@ public class Projectile : MonoBehaviour
         {
             enemy.TakeDamage(damage);
 
-            Destroy(gameObject);
+            gameObject.gameObject.SetActive(false);
         }
     }
+    public void Initialize(Vector2 newDirection)
+    {
+        direction = newDirection.normalized;
+        timer = 0f;
+    }
+
 }
